@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cashout;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class FinancialController extends Controller
 {
     public function showFinancial(){
         $myFinancial = Auth::user()->financial;
-        return view('user.financial', compact('myFinancial'));
+        $myCashouts = Auth::user()->Cashout;
+        return view('user.financial', compact('myFinancial','myCashouts'));
     }
     // for cashout
     public function cashout(){
