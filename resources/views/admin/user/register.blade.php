@@ -1,0 +1,34 @@
+@extends('admin.layouts.master')
+@section('title', 'Admin Registration')
+@section('content')
+<div class="row justify-content-center mt-4 mb-4">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h2>Register your account</h2>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('admin.getRegister') }}" method="GET">
+                    @csrf
+                    <input class="form-control mt-2" type="text" name="uname" placeholder="Inter your user name" value="{{ old('uname') }}">
+                    {{-- show error --}}
+                    @error('uname')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                    <input class="form-control mt-2" type="email" name="email" placeholder="Inter your valid email" value="{{ old('email') }}">
+                    {{-- show error --}}
+                    @error('email')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                    <input class="form-control mt-2" type="password" name="password" placeholder="Type a strong password">{{-- show error --}}
+                    @error('password')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                    <input class="form-control mt-2" type="password" name="password_confirmation" placeholder="Retype your password">
+                    <input class="btn btn-success mt-2" type="submit" name="submit" value="Register">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
