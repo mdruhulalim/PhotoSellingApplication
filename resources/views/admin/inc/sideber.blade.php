@@ -28,6 +28,11 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Buy out</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('admin.cashout.show') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Cash out</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">

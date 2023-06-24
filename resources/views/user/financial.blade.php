@@ -26,7 +26,7 @@
                     @forelse ($myCashouts as $myCashout)
                         <tr>
                             <th scope="row">{{ $myCashout->id }}</th>
-                            <td>{{ $myCashout->amount }}</td>
+                            <td>{{ $myCashout->amount }}$</td>
                             <td>{{ $myCashout->created_at }}</td>
                             <td>{{ strtoupper($myCashout->status) }}</td>
                         </tr>

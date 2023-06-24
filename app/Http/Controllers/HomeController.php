@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Photo;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(){
-        $sliderHead="Welcome home";
-        $sliderText="this is te dummy text of slider home page";
-        return view('home',compact(['sliderHead','sliderText']));
+        $sliderHead="Photo sell for Photographer";
+        $sliderText="Lorem ipsum";
+        $randomImages = Photo::with('user')->inRandomOrder()->paginate(20);
+        return view('home',compact(['sliderHead','sliderText','randomImages']));
     }
 
     public function redirectUser(){

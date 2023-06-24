@@ -7,6 +7,7 @@
             <!-- Product name-->
             <h5 class="fw-bolder">{{ $imageName }}</h5>
             <p>{{ $imageDetails }}</p>
+            <a class="btn btn-sm btn-outline-info" download="" href="{{ asset('uploads/').$image }}">Download</a>
         </div>
     </div>
     <!-- Product actions-->

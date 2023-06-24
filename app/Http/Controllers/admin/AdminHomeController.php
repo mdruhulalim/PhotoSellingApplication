@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cashout;
 use App\Models\Photo;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminHomeController extends Controller
 {
+    // showing admin home
     public function index(){
         return view('admin.home');
     }
@@ -82,6 +84,24 @@ class AdminHomeController extends Controller
             
         }else{
             return "Hacked";
+        }
+    }
+
+    // for cashout
+    public function showCashouts(){
+        $cashouts = Cashout::with('user')->latest()->paginate(10);
+        return view('admin.cashouts', compact('cashouts'));
+    }
+    // for cashoutUpdate
+    public function cashoutUpdate($cashoutiD = null,$status = null){
+        if($cashoutiD && $status){
+            $cashout = Cashout::findOrfail($cashoutiD);
+            $cashout->update([
+                'status' => $status,
+            ]);
+            return redirect()->back();
+        }else{
+            abort(403);
         }
     }
 }

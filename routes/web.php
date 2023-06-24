@@ -63,6 +63,9 @@ Route::group(['prefix' => 'admin'],function(){
         // for image buyOUt
         Route::get('/buy-out', [AdminHomeController::class, 'buyOutShow'])->name('admin.buyout.show');
         Route::post('/buy-out/update/', [AdminHomeController::class, 'buyOutUpdate'])->name('admin.buyout.update');
+        // for image CashOUt
+        Route::get('/cashout', [AdminHomeController::class, 'showCashouts'])->name('admin.cashout.show');
+        Route::get('/cashout/update/{cashoutID}/{status}', [AdminHomeController::class, 'cashoutUpdate'])->name('admin.cashout.update');
     });
    
 
